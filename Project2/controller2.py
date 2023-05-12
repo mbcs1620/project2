@@ -29,11 +29,17 @@ class Controller(QMainWindow, Ui_MainWindow):
         self.add_image()
 
     def add_image(self):
+        """
+        Method to display image in the GUI.
+        """
         Qpixmap = QPixmap('background.jpg')
         self.label_picture.setPixmap(Qpixmap)
 
 
     def submit(self):
+        """
+        Method to calculate the converted times when submit is clicked.
+        """
 
         global distance
         global convert_from
@@ -261,31 +267,66 @@ class Controller(QMainWindow, Ui_MainWindow):
 
 
 
-    def scy_scm(self, seconds):
+    def scy_scm(self, seconds: float) -> float:
+        """
+        Method to convert scy to scm.
+        :param seconds: Initial total seconds.
+        :return: Converted final seconds.
+        """
         final_time = seconds * 1.11
         return final_time
 
-    def scy_lcm(self,seconds):
+    def scy_lcm(self,seconds: float) -> float:
+        """
+        Method to convert scy to lcm.
+        :param seconds: Initial total seconds.
+        :return: Converted final seconds.
+        """
         final_time = (seconds * 1.11) + (0.02*(seconds * 1.11))
         return final_time
 
-    def scm_scy(self,seconds):
+    def scm_scy(self,seconds: float) -> float:
+        """
+        Method to convert scm to scy.
+        :param seconds: Initial total seconds.
+        :return: Converted final seconds.
+        """
         final_time = seconds * 0.89
         return final_time
 
-    def scm_lcm(self,seconds):
+    def scm_lcm(self,seconds: float) -> float:
+        """
+        Method to convert scm to lcm.
+        :param seconds: Initial total seconds.
+        :return: Converted final seconds.
+        """
         final_time = (0.02*(seconds)) + (seconds)
         return final_time
 
-    def lcm_scy(self,seconds):
+    def lcm_scy(self,seconds: float) -> float:
+        """
+        Method to convert lcm to scy.
+        :param seconds: Initial total seconds.
+        :return: Converted final seconds.
+        """
         final_time = ((seconds) * 0.89) - (0.02*((seconds) * 0.89))
         return final_time
 
-    def lcm_scm(self,seconds):
+    def lcm_scm(self,seconds: float) -> float:
+        """
+        Method to convert lcm to scm.
+        :param seconds: Initial total seconds.
+        :return: Converted final seconds.
+        """
         final_time = (seconds) - (0.02*(seconds))
         return final_time
 
-    def time_convert(self, final_time):
+    def time_convert(self, final_time: float):
+        """
+        Method that returns the final minutes, seconds, and hundredths.
+        :param final_time: Final converted time in seconds.
+        :return: Final amount of minutes, seconds, and hundredths.
+        """
         minutes = final_time // 60
         final_time %= 60
         hundredths = final_time % 1 * 100
